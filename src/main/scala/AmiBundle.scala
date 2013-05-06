@@ -4,7 +4,7 @@ import shapeless._
 import ohnosequences.statika.General._
 import scala.sys.process._
 
-abstract class CredentialsBundle(id: String, amiVersion: String, version: String) extends 
+abstract class AmiBundle(id: String, amiVersion: String, version: String) extends 
   Bundle(id+"_"+amiVersion, version, dependencies = HNil: HNil) {
 
   override val install = {
