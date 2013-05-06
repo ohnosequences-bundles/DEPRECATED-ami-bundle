@@ -8,7 +8,7 @@ abstract class CredentialsBundle(id: String, amiVersion: String, version: String
   Bundle(id+"_"+amiVersion, version, dependencies = HNil: HNil) {
 
   override val install = {
-    val ami = "ec2-metadata -a".!
+    val ami = "ec2-metadata -a".!!
     if (ami == "ami-id: " + id)
     	success("Checked that Amazon Machine Image is " + this)
     else
