@@ -15,5 +15,6 @@ abstract class AmiBundle(id: String, amiVersion: String, version: String) extend
       failure("AMI should be "+ id +", instead of "+ ami)
   }
 
-  def userScript(b: BundleAux)(implicit s: Selector[b.Deps, this.type]): String
+  def userScript[B <: BundleAux](b: B, artifact: String)
+      (implicit s: Selector[b.Deps, this.type]): String
 }
