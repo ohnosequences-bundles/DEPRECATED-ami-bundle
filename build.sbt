@@ -7,8 +7,6 @@ name := "ami-bundle"
 
 organization := "ohnosequences"
 
-version := "0.1.1-SNAPSHOT"
-
 scalaVersion := "2.10.0"
 
 publishMavenStyle := false
@@ -31,7 +29,7 @@ resolvers ++= s3resolvers
 
 libraryDependencies ++= Seq (
                               "com.chuusai" %% "shapeless" % "1.2.3"
-                            , "ohnosequences" %% "statika" % "0.7.0"
+                            , "ohnosequences" %% "statika" % "0.7.1"
                             )
 
  

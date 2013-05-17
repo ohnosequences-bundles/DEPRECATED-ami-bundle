@@ -26,9 +26,9 @@ object AmiBundleBuild extends Build {
             commitReleaseVersion,                   // : ReleaseStep, performs the initial git checks
             tagRelease,                             // : ReleaseStep
             publishArtifacts,                       // : ReleaseStep, checks whether `publishTo` is properly set up
-            setNextVersion,                         // : ReleaseStep
-            commitNextVersion,                      // : ReleaseStep
-            pushChanges                             // : ReleaseStep, also checks that an upstream branch is properly configured
+            setNextVersion                          // : ReleaseStep
+            // commitNextVersion,                      // : ReleaseStep
+            // pushChanges                             // : ReleaseStep, also checks that an upstream branch is properly configured
           )
         },
         releaseVersion := { ver => ver } // don't cut snapshots!
@@ -36,7 +36,7 @@ object AmiBundleBuild extends Build {
   )
 
 val credentials = {
-  val path = Path.userHome / ".ec2" / "PrivateS3Credentials.properties"
+  val path = new java.io.File("AwsCredentials.properties")
   if (!path.exists)
     Left("Credentials file " + path + " does not exist")
   else {
