@@ -4,7 +4,7 @@ import shapeless._
 import ohnosequences.statika.General._
 import scala.sys.process._
 
-abstract class AmiBundle(id: String, amiVersion: String, version: String) extends 
+abstract class AmiBundle(val id: String, val amiVersion: String, version: String) extends 
   Bundle(id+"_"+amiVersion.replaceAll("\\.","_"), version, dependencies = HNil: HNil) {
 
   override def install = {
