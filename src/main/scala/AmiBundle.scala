@@ -4,10 +4,15 @@ import shapeless._
 import ohnosequences.statika.General._
 import scala.sys.process._
 
-abstract class AmiBundle(val id: String, val amiVersion: String, version: String) extends 
+abstract class AmiBundle(
+    val id: String
+  , val amiVersion: String
+  , version: String
+  ) extends 
   Bundle( name = id.split("""\W""").map(_.capitalize).mkString +
                  "_" + amiVersion.replaceAll("\\.","_")
-        , version = version
+        , version
+        , artifact = id+"."+amiVersion
         , dependencies = HNil: HNil) {
 
   override def install = {
@@ -18,6 +23,6 @@ abstract class AmiBundle(val id: String, val amiVersion: String, version: String
       failure("AMI should be "+ id +", instead of "+ ami)
   }
 
-  def userScript[B <: BundleAux](b: B, artifact: String)
+  def userScript[B <: BundleAux](b: B)
       (implicit s: Selector[b.Deps, this.type]): String
 }
