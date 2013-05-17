@@ -29,7 +29,7 @@ resolvers ++= s3resolvers
 
 libraryDependencies ++= Seq (
                               "com.chuusai" %% "shapeless" % "1.2.3"
-                            , "ohnosequences" %% "statika" % "0.7.1"
+                            , "ohnosequences" %% "statika" % "0.8.1"
                             )
 
  
