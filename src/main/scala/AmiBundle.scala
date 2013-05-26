@@ -11,7 +11,7 @@ object Ami {
     (implicit meta: BundleMetaData) extends BundleWithMetaData(data = meta) {
 
     override def install = {
-      val ami = "wget -q -O - http://169.254.169.254/latest/meta-data/ami-id".!!.replaceAll("\n","")
+      val ami = "wget -t 1 -q -O - http://169.254.169.254/latest/meta-data/ami-id".!!.replaceAll("\n","")
       if (ami == id)
         success("Checked that Amazon Machine Image is " + id)
       else

@@ -5,4 +5,4 @@ resolvers ++= Seq (
     Patterns("[organisation]/[module]/[revision]/[type]s/[artifact].[ext]"))
 )
 
-addSbtPlugin("ohnosequences" % "sbt-statika" % "0.1.1")
+addSbtPlugin("ohnosequences" % "sbt-statika" % "0.1.2")
