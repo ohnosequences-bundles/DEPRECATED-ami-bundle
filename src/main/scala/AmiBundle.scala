@@ -2,13 +2,13 @@ package ohnosequences.statika
 
 import shapeless._
 import ohnosequences.statika.General._
+import ohnosequences.statika.MetaData._
 import ohnosequences.statika.TypeLookupHList._
 import scala.sys.process._
 
 object Ami {
 
-  abstract class AmiBundle(val id: String, val amiVersion: String)
-    (implicit meta: BundleMetaData) extends BundleWithMetaData(data = meta) {
+  abstract class AmiBundle(val id: String, val amiVersion: String) extends Bundle() {
 
     override def install = {
       val ami = "wget -t 1 -q -O - http://169.254.169.254/latest/meta-data/ami-id".!!.replaceAll("\n","")
@@ -18,8 +18,9 @@ object Ami {
         failure("AMI should be "+ id +", instead of "+ ami)
     }
 
-    def userScript[B <: BundleAux](b: B)
-        (implicit s: Selector[b.Deps, this.type]): String
+    def userScript[ B <: BundleAux : DependsOn[this.type]#λ ]( b: B )
+      (implicit md: MetaDataOf[b.type]): String
+
   }
 
   implicit class GetBundlesAmi[B <: BundleAux](b: B) {
