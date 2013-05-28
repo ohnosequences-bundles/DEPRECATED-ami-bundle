@@ -1,9 +1,0 @@
-{
-    "name": "ami-bundle",
-    "bundle_version": "0.1.0-SNAPSHOT",
-    "description": "Abstract bundle for AMIs (Amazon Machine Images)",
-    "org": "ohnosequences",
-    "scala_version": "2.10.0",
-    "publish_private": false,
-    "dependencies": []
-}
