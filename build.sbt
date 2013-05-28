@@ -7,7 +7,7 @@ organization := "ohnosequences"
 isPrivate := false
 
 
-bundlePackage := "ohnosequences.statika"
+bundleAmi := ""
 
 bundleObject := "AmiBundle"
 
